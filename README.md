@@ -1,7 +1,7 @@
-# docker-ansible-server
+# docker-ansible-client
 
 Very basic image with:
-- ansible installed
+- packages needed to be a client
 - ansible user added
 - ansible keys added
 
