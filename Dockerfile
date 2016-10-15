@@ -11,21 +11,21 @@ ENV DEBIAN_FRONTEND noninteractive
 # Additional packages required for ansible
 RUN apt-get install -y sudo python
 
-# Userid that will run ansible commands
-RUN useradd -m -d /home/ansible -s /bin/bash ansible
+# Userid that will run ansible commands (rundeck)
+RUN useradd -m -d /home/rundeck -s /bin/bash rundeck
 
-# Generate keys for ansible user
-RUN su - ansible -c "ssh-keygen -q -N \"\" -t rsa -f /home/ansible/.ssh/id_rsa"
+# Generate keys for rundeck user
+RUN su - rundeck -c "ssh-keygen -q -N \"\" -t rsa -f /home/rundeck/.ssh/id_rsa"
 
-# Copy authorized_keys for ansible user
-COPY authorized_keys /home/ansible/.ssh/ 
+# Copy authorized_keys for rundeck user
+COPY authorized_keys /home/rundeck/.ssh/ 
 
 # Fix permissions on authorized_keys
-RUN chown ansible:ansible /home/ansible/.ssh/authorized_keys && \
-      chmod 600 /home/ansible/.ssh/authorized_keys
+RUN chown rundeck:rundeck /home/rundeck/.ssh/authorized_keys && \
+      chmod 600 /home/rundeck/.ssh/authorized_keys
 
-# Sudoers file for ansible user
-COPY ansible-user /etc/sudoers.d/
+# Sudoers file for rundeck user
+COPY rundeck-user /etc/sudoers.d/
 
 # Create for ssh
 RUN mkdir /var/run/sshd
