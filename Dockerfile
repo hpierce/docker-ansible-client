@@ -8,9 +8,6 @@ MAINTAINER Hugh Pierce
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Additional packages required for ansible
-RUN apt-get install -y sudo python
-
 # Userid that will run ansible commands (rundeck)
 RUN useradd -m -d /home/rundeck -s /bin/bash rundeck
 
