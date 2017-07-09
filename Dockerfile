@@ -27,5 +27,6 @@ COPY rundeck-user /etc/sudoers.d/
 # Create for ssh
 RUN mkdir /var/run/sshd
 
-ENTRYPOINT /usr/sbin/sshd -D
+# Start services
+ENTRYPOINT service ssh start && /bin/bash
 
