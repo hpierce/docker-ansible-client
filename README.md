@@ -7,6 +7,6 @@ Very basic image with:
 
 ### Example: client with port 80 exposed as 8080
 ``` bash
-# docker run -it 8080:80 hpierce/docker-ansible-client /bin/bash
+# docker run -it -p 8080:80 hpierce/docker-ansible-client /bin/bash
 ```
 
